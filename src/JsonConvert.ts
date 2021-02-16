@@ -1,4 +1,3 @@
-import { type } from 'os';
 import 'reflect-metadata';
 
 export function jsonProperty(propertyName: string): (obj: Object, key: string) => void;
