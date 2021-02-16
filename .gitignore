@@ -1,0 +1,16 @@
+# Packages
+node_modules/
+yarn.lock
+
+# Log files
+*.log
+
+# Build
+dist/
+.next/
+
+# Environment
+.env
+
+# Miscellaneous
+.DS_Store
