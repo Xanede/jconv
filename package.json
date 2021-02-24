@@ -1,9 +1,15 @@
 {
   "name": "jconv",
-  "version": "1.0.0",
+  "author": {
+    "name": "Xanede"
+  },
+  "version": "1.0.1",
   "license": "MIT",
+  "main": "lib/JsonConvert.js",
+  "types": "lib/JsonConvert.d.ts",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "prepack": "tsc"
   },
   "devDependencies": {
     "@types/node": "^14.14.28",

@@ -1,0 +1,45 @@
+{
+  "page": "/feed",
+  "posts": [
+    {
+      "id": 1,
+      "title": "first post",
+      "text": "content",
+      "media_link_photo": "https://cdn.example.com/posts/1/photo.png",
+      "tags": ["tag1", "tag2", "tag3"],
+      "replies": [
+        {
+          "author": 1,
+          "text": "comment",
+          "publication_date": "2021-02-24T17:06:52.704Z"
+        },
+        {
+          "author": 3,
+          "text": "comment",
+          "publication_date": "2021-02-24T17:09:34.017Z"
+        }
+      ],
+      "publication_date": "2021-02-24T17:06:09.284Z"
+    },
+    {
+      "id": 2,
+      "title": "second post",
+      "text": "content",
+      "media_link_photo": "https://cdn.example.com/posts/2/photo.png",
+      "tags": ["tag3", "tag4", "tag5"],
+      "replies": [
+        {
+          "author": 2,
+          "text": "comment",
+          "publication_date": "2021-02-24T17:10:52.565Z"
+        },
+        {
+          "author": 3,
+          "text": "comment",
+          "publication_date": "2021-02-24T17:11:08.504Z"
+        }
+      ],
+      "publication_date": "2021-02-24T17:10:44.339Z"
+    }
+  ]
+}
