@@ -1,0 +1,9 @@
+.vscode/
+examples/
+src/
+
+.gitignore
+.prettierrc
+
+nodemon.json
+tsconfig.json
