@@ -3,7 +3,7 @@
   "author": {
     "name": "Xanede"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "main": "lib/JsonConvert.js",
   "types": "lib/JsonConvert.d.ts",

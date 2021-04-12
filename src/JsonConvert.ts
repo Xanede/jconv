@@ -107,7 +107,7 @@ class JsonConvert {
         const ArrayType = ReturnType[0];
 
         if (!Array.isArray(jObject)) {
-          throw new TypeError(`Expected ${JSON.stringify(jObject)} to be an array`);
+          return [];
         }
 
         return jObject.map(JsonConvert.deserializeObject(ArrayType));
