@@ -49,9 +49,9 @@ class JsonConvert {
     }
 
     switch (typeof obj) {
-      case 'string':
-      case 'number':
       case 'boolean':
+      case 'number':
+      case 'string':
         return obj;
 
       default:
@@ -62,7 +62,7 @@ class JsonConvert {
       return obj;
     }
 
-    if (Array.isArray(obj)) {
+    if (obj instanceof Array) {
       return obj.map(JsonConvert.serializeObject);
     }
 
@@ -98,7 +98,7 @@ class JsonConvert {
   private static deserializeObject<T>(ReturnType: Constructor<T>): (jObject: Object) => T;
   private static deserializeObject<T>(ReturnType: [Constructor<T>]): (jObject: Object) => T[];
   private static deserializeObject(ReturnType?: any) {
-    return (jObject: Object) => {
+    return (jObject: any) => {
       if (isNullOrUndefined(ReturnType) || isNullOrUndefined(jObject)) {
         return jObject;
       }
@@ -106,16 +106,21 @@ class JsonConvert {
       if (Array.isArray(ReturnType)) {
         const ArrayType = ReturnType[0];
 
-        if (Array.isArray(jObject)) {
-          return jObject.map(JsonConvert.deserializeObject(ArrayType));
+        if (!Array.isArray(jObject)) {
+          throw new TypeError(`Expected ${JSON.stringify(jObject)} to be an array`);
         }
 
-        return [];
+        return jObject.map(JsonConvert.deserializeObject(ArrayType));
       }
 
       switch (ReturnType) {
         case Date:
           return new ReturnType(jObject);
+
+        case Boolean:
+        case Number:
+        case String:
+          return new ReturnType(jObject).valueOf();
 
         default:
           break;
@@ -123,8 +128,8 @@ class JsonConvert {
 
       const obj = new ReturnType();
 
-      const metadataKeys = Reflect.getMetadataKeys(obj.constructor);
-      for (const key of metadataKeys) {
+      const metaKeys = Reflect.getMetadataKeys(obj.constructor);
+      for (const key of metaKeys) {
         const { propertyName, type } = Reflect.getMetadata(key, obj.constructor);
 
         let value = Reflect.get(jObject, propertyName);

@@ -1,6 +1,7 @@
 .vscode/
 examples/
 src/
+node_modules/
 
 .gitignore
 .prettierrc
